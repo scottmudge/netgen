@@ -372,25 +372,20 @@ if (USE_OCC)
       TKGeomAlgo
       TKGeomBase
       TKHLR
-      TKIGES
       TKLCAF
       TKMath
       TKMesh
       TKOffset
       TKPrim
-      TKSTEP
-      TKSTEP209
-      TKSTEPAttr
-      TKSTEPBase
-      TKSTL
+      TKDESTL
       TKService
       TKShHealing
       TKTopAlgo
       TKV3d
       TKVCAF
       TKXCAF
-      TKXDEIGES
-      TKXDESTEP
+      TKDEIGES
+      TKDESTEP
       TKXSBase
       TKernel
     )

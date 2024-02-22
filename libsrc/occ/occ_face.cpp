@@ -32,7 +32,11 @@ namespace netgen
 
     size_t OCCFace::GetHash() const
     {
+#if OCC_VERSION_HEX < 0x070800
       return face.HashCode(std::numeric_limits<Standard_Integer>::max());
+#else
+      return std::hash<TopoDS_Shape>{}(face);
+#endif
     }
 
     Point<3> OCCFace::GetCenter() const

@@ -10,27 +10,17 @@
 #ifndef _Partition_Loop3d_HeaderFile
 #define _Partition_Loop3d_HeaderFile
 
-#ifndef _TopTools_ListOfShape_HeaderFile
-#include <TopTools_ListOfShape.hxx>
-#endif
-#ifndef _TopTools_IndexedDataMapOfShapeListOfShape_HeaderFile
-#include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
-#endif
-#ifndef _Standard_Boolean_HeaderFile
-#include <Standard_Boolean.hxx>
-#endif
-#ifndef _Standard_Real_HeaderFile
-#include <Standard_Real.hxx>
-#endif
-#ifndef _Standard_Version_HeaderFile
 #include <Standard_Version.hxx>
-#endif
+#include <Standard_Boolean.hxx>
+#include <Standard_Real.hxx>
+#include <Standard_Version.hxx>
+#include <TopTools_ListOfShape.hxx>
+#include <TopTools_IndexedDataMapOfShapeListOfShape.hxx>
 
-#if OCC_VERSION_HEX < 0x070000
+#if OCC_VERSION_HEX < 0x070000 || OCC_VERSION_HEX > 0x070799
 #else
-   #include <TopTools_ShapeMapHasher.hxx>
-   #include <TopTools_OrientedShapeMapHasher.hxx>
-   #include <TopTools_MapOfOrientedShape.hxx>
+#include <TopTools_ShapeMapHasher.hxx>
+#include <TopTools_OrientedShapeMapHasher.hxx>
 #endif
 
 class TopoDS_Shape;
@@ -38,6 +28,8 @@ class TopoDS_Shape;
 #if OCC_VERSION_HEX < 0x070000
    class TopTools_ListOfShape;
    class TopTools_MapOfOrientedShape;
+#else
+#include <TopTools_MapOfOrientedShape.hxx>
 #endif
 
 class TopoDS_Edge;

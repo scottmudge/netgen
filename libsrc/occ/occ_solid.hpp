@@ -16,8 +16,11 @@ namespace netgen
         OCCSolid(TopoDS_Shape dshape)
             : solid(TopoDS::Solid(dshape))
         { }
-
+#if OCC_VERSION_HEX < 0x070800
         size_t GetHash() const override { return solid.HashCode(std::numeric_limits<Standard_Integer>::max()); }
+#else
+        size_t GetHash() const override { return std::hash<TopoDS_Solid>{}(solid); }
+#endif
     };
 }
 

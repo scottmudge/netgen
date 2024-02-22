@@ -55,7 +55,11 @@ namespace netgen
 
     size_t OCCEdge::GetHash() const
     {
+#if OCC_VERSION_HEX < 0x070800
       return edge.HashCode(std::numeric_limits<Standard_Integer>::max());
+#else
+      return std::hash<TopoDS_Shape>{}(edge); 
+#endif
     }
 
     void OCCEdge::ProjectPoint(Point<3>& p, EdgePointGeomInfo* gi) const
