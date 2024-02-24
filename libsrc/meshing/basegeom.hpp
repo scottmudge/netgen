@@ -220,7 +220,7 @@ namespace netgen
 
     void Clear();
 
-    virtual int GenerateMesh (shared_ptr<Mesh> & mesh, MeshingParameters & mparam);
+    virtual int GenerateMesh (shared_ptr<Mesh> & mesh, MeshingParameters & mparam, void* geom_ptr = nullptr);
 
     void RestrictH(const Point<3>& pnt, double maxh)
     {

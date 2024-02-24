@@ -219,8 +219,9 @@ namespace netgen
 			      shared_ptr<Mesh> & mesh, MeshingParameters & mparam);
 
 
-  int CSGeometry :: GenerateMesh (shared_ptr<Mesh> & mesh, MeshingParameters & mparam)
+  int CSGeometry :: GenerateMesh (shared_ptr<Mesh> & mesh, MeshingParameters & mparam, void* geom_ptr)
   {
+	if (mesh && geom_ptr) mesh->SetGeometryPtrOverride((netgen::NetgenGeometry*)geom_ptr);
     if(restricted_h.Size())
       {
         // copy so that we don't change mparam outside

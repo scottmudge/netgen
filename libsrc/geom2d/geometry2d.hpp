@@ -196,7 +196,7 @@ namespace netgen
     }
 
     
-    int GenerateMesh (shared_ptr<Mesh> & mesh, MeshingParameters & mparam) override;
+    int GenerateMesh (shared_ptr<Mesh> & mesh, MeshingParameters & mparam, void* geom_ptr = nullptr) override;
     
     void PartitionBoundary (MeshingParameters & mp, double h, Mesh & mesh2d);
 

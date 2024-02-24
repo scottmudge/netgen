@@ -889,7 +889,7 @@ namespace nglib
    // ------------------ Begin - Second Order Mesh generation functions ----------------
    NGLIB_API void Ng_Generate_SecondOrder(Ng_Mesh * mesh)
    {
-     Refinement ref(*((Mesh*) mesh)->GetGeometry());
+     Refinement ref(*((Mesh*) mesh)->GetGeometryPtr());
       ref.MakeSecondOrder(*(Mesh*) mesh);
    }
 
@@ -931,7 +931,7 @@ namespace nglib
    // ------------------ Begin - Uniform Mesh Refinement functions ---------------------
    NGLIB_API void Ng_Uniform_Refinement (Ng_Mesh * mesh)
    {
-     Refinement ref(*((Mesh*)mesh)->GetGeometry());
+     Refinement ref(*((Mesh*)mesh)->GetGeometryPtr());
      ref.Refine ( * (Mesh*) mesh );
    }
 

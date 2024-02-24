@@ -1011,7 +1011,7 @@ void Ng_Refine (NG_REFINEMENT_TYPE reftype)
   if (reftype == NG_REFINE_HP)
     biopt.refine_hp = 1;
 
-  const Refinement & ref = mesh->GetGeometry()->GetRefinement();
+  const Refinement & ref = mesh->GetGeometryPtr()->GetRefinement();
 
   // Refinement * ref;
   MeshOptimize2d * opt = NULL;
@@ -1057,7 +1057,7 @@ void Ng_Refine (NG_REFINEMENT_TYPE reftype)
 
 void Ng_SecondOrder ()
 {
-  const_cast<Refinement&> (mesh->GetGeometry()->GetRefinement()).MakeSecondOrder(*mesh);
+  const_cast<Refinement&> (mesh->GetGeometryPtr()->GetRefinement()).MakeSecondOrder(*mesh);
   /*
     if (stlgeometry)
     {
@@ -1124,7 +1124,7 @@ void Ng_HPRefinement (int levels, double parameter, bool setorders,
                       bool ref_level)
 {
   NgLock meshlock (mesh->MajorMutex(), true);
-  Refinement & ref = const_cast<Refinement&> (mesh->GetGeometry()->GetRefinement());
+  Refinement & ref = const_cast<Refinement&> (mesh->GetGeometryPtr()->GetRefinement());
   HPRefinement (*mesh, &ref, SPLIT_HP, levels, parameter, setorders, ref_level);
   /*
     Refinement * ref;
@@ -2130,7 +2130,7 @@ int Ng_Bisect_WithInfo ( const char * refinementfile, double ** qualityloss, int
   biopt.femcode = "fepp";
   biopt.refinementfilename = refinementfile;
   
-  Refinement * ref = const_cast<Refinement*> (&mesh->GetGeometry()->GetRefinement());
+  Refinement * ref = const_cast<Refinement*> (&mesh->GetGeometryPtr()->GetRefinement());
   MeshOptimize2d * opt = NULL;
   /*
     if (stlgeometry)

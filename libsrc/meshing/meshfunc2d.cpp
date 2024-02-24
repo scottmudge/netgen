@@ -100,7 +100,7 @@ namespace netgen
     mesh.Compress(); // better: compress in individual steps, if necessary
     if (secondorder)
       {
-        mesh.GetGeometry()->GetRefinement().MakeSecondOrder(mesh);
+        mesh.GetGeometryPtr()->GetRefinement().MakeSecondOrder(mesh);
       }
   }
 

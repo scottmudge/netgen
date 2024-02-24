@@ -472,7 +472,7 @@ namespace netgen
 
     friend class MeshingSTLSurface;
 
-    int GenerateMesh (shared_ptr<Mesh> & mesh, MeshingParameters & mparam) override;
+    int GenerateMesh (shared_ptr<Mesh> & mesh, MeshingParameters & mparam, void* geom_ptr = nullptr) override;
     
     // Add additional Point to chart to close the surface and write the resulting stl to a file
     void WriteChartToFile( ChartId chartnumber, filesystem::path filename="chart.slb" );

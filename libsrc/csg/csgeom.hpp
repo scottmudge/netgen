@@ -374,7 +374,7 @@ namespace netgen
       
 
     
-    virtual int GenerateMesh (shared_ptr<Mesh> & mesh, MeshingParameters & mparam) override;
+    virtual int GenerateMesh (shared_ptr<Mesh> & mesh, MeshingParameters & mparam, void* geom_ptr = nullptr) override;
 
     void AddSplineSurface (shared_ptr<SplineSurface> ss) { spline_surfaces.Append(ss); }
   };

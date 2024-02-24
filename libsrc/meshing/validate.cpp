@@ -276,7 +276,7 @@ namespace netgen
 
     double oldlamedge,oldlamface;
 
-    auto geo = mesh.GetGeometry();
+    auto geo = mesh.GetGeometryPtr();
     if(!geo)
       {
 	cerr << "No 2D Optimizer!" << endl;

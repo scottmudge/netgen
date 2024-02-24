@@ -475,7 +475,7 @@ namespace netgen
             {
                 // point possibly on edge -> multiple normal vectors (for each surface), need to calculate it to be sure
                 const int surfnr = mesh.GetFaceDescriptor (el.GetIndex()).SurfNr();
-                normal = mesh.GetGeometry()->GetNormal (surfnr, mesh[el[l]], &el.GeomInfo()[l]);
+                normal = mesh.GetGeometryPtr()->GetNormal (surfnr, mesh[el[l]], &el.GeomInfo()[l]);
             }
             if ( ( normal * nv) < 0.5)
                 bad2 += 1e10;

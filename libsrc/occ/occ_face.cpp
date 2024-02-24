@@ -46,7 +46,7 @@ namespace netgen
 
     Array<Segment> OCCFace::GetBoundary(const Mesh& mesh) const
     {
-        auto & geom = dynamic_cast<OCCGeometry&>(*mesh.GetGeometry());
+        auto & geom = reinterpret_cast<OCCGeometry&>(*mesh.GetGeometryPtr()); 
 
         auto n_edges = geom.GetNEdges();
         constexpr int UNUSED = 0;

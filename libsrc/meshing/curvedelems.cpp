@@ -554,7 +554,7 @@ namespace netgen
   void CurvedElements :: BuildCurvedElements(const Refinement * ref, int aorder,
                                              bool arational)
   {
-    auto & geo = *mesh.GetGeometry();
+    auto & geo = *mesh.GetGeometryPtr();
 
     ishighorder = 0;
     order = 1;

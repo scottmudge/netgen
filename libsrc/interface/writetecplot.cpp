@@ -18,7 +18,7 @@ namespace netgen
 void WriteTecPlotFormat (const Mesh & mesh,
 			 const filesystem::path & filename)
 {
-  auto geom = dynamic_pointer_cast<CSGeometry>(mesh.GetGeometry());
+  auto geom = reinterpret_cast<CSGeometry*>(mesh.GetGeometryPtr());
   if(geom == nullptr)
     throw Exception("TecPlot format requires a CSGeometry");
 

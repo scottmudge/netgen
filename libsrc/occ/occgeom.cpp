@@ -2198,7 +2198,7 @@ namespace netgen
 
   // int OCCGeometry :: GenerateMesh (shared_ptr<Mesh> & mesh, MeshingParameters & mparam)
   //  {
-  //    return OCCGenerateMesh (*this, mesh, mparam, occparam);
+  //    return OCCGenerateMesh (*this, mesh, mparam, occparam); 
   //  }
   static RegisterClassForArchive<OCCGeometry, NetgenGeometry> regnggeo;
 

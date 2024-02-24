@@ -1184,13 +1184,13 @@ namespace netgen
     biopt.task_manager = task_manager;
     biopt.tracer = tracer;
 
-    mesh->GetGeometry()->GetRefinement().Bisect (*mesh, biopt);
+    mesh->GetGeometryPtr()->GetRefinement().Bisect (*mesh, biopt);
     (*tracer)("call updatetop", false);
     mesh -> UpdateTopology(task_manager, tracer);
     (*tracer)("call updatetop", true);
     if(mesh->GetCurvedElements().IsHighOrder())
       mesh->GetCurvedElements()
-        .BuildCurvedElements(&mesh->GetGeometry()->GetRefinement(),
+        .BuildCurvedElements(&mesh->GetGeometryPtr()->GetRefinement(),
                                 mesh->GetCurvedElements().GetOrder());
   }
 
@@ -1226,14 +1226,14 @@ namespace netgen
                                bool ref_level)
   {
     NgLock meshlock (mesh->MajorMutex(), true);
-    Refinement & ref = const_cast<Refinement&> (mesh->GetGeometry()->GetRefinement());
+    Refinement & ref = const_cast<Refinement&> (mesh->GetGeometryPtr()->GetRefinement());
     ::netgen::HPRefinement (*mesh, &ref, SPLIT_HP, levels, parameter, setorders, ref_level);
   }
 
   void Ngx_Mesh::SplitAlfeld ()
   {
     NgLock meshlock (mesh->MajorMutex(), true);
-    Refinement & ref = const_cast<Refinement&> (mesh->GetGeometry()->GetRefinement());
+    Refinement & ref = const_cast<Refinement&> (mesh->GetGeometryPtr()->GetRefinement());
     ::netgen::HPRefinement (*mesh, &ref, SPLIT_ALFELD, 1, 1.0/3.0, true, true);
   }
 

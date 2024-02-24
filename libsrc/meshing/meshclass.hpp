@@ -192,6 +192,7 @@ namespace netgen
 
     
     shared_ptr<NetgenGeometry> geometry;
+    NetgenGeometry* geometry_ptr_override = nullptr;
 
 
   public:
@@ -910,9 +911,14 @@ namespace netgen
 
 
     DLL_HEADER shared_ptr<NetgenGeometry> GetGeometry() const;
+    DLL_HEADER NetgenGeometry* GetGeometryPtr() const;
     void SetGeometry (shared_ptr<NetgenGeometry> geom) 
     {
       geometry = geom;
+    }
+
+    void SetGeometryPtrOverride(NetgenGeometry* const geom) {
+        geometry_ptr_override = geom;
     }
 
     ///

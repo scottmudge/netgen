@@ -1217,7 +1217,7 @@ namespace netgen
 
 
   
-  int NetgenGeometry :: GenerateMesh (shared_ptr<Mesh> & mesh, MeshingParameters & mp)
+  int NetgenGeometry :: GenerateMesh (shared_ptr<Mesh> & mesh, MeshingParameters & mp, void* geom_ptr)
   {
     multithread.percent = 0;
 
@@ -1231,9 +1231,11 @@ namespace netgen
       {
         if(!mesh)
           mesh = make_shared<Mesh>();
+        if (geom_ptr) mesh->SetGeometryPtrOverride((netgen::NetgenGeometry*)geom_ptr);
         mesh->geomtype = GetGeomType();
         Analyse(*mesh, mparam);
       }
+    if (mesh && geom_ptr) mesh->SetGeometryPtrOverride((netgen::NetgenGeometry*)geom_ptr);
 
     if(multithread.terminate || mparam.perfstepsend <= MESHCONST_ANALYSE)
       return 0;

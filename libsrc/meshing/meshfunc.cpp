@@ -606,7 +606,7 @@ namespace netgen
              throw NgException ("Stop meshing since boundary mesh is overlapping");
            }
 
-         if(md[i].mesh->GetGeometry()->GetGeomType() == Mesh::GEOM_OCC)
+         if(md[i].mesh->GetGeometryPtr()->GetGeomType() == Mesh::GEOM_OCC)
             FillCloseSurface( md[i] );
          CloseOpenQuads( md[i] );
          MeshDomain(md[i]);

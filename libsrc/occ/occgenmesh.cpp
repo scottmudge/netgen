@@ -564,7 +564,7 @@ namespace netgen
               }
 
             bool is_identified_edge = false;
-            // TODO: change to use hash value
+            // TODO: change to use hash value 
             const auto& gedge = geom.GetEdge(e);
             auto& v0 = gedge.GetStartVertex();
             auto& v1 = gedge.GetEndVertex();

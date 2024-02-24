@@ -94,9 +94,10 @@ void STLGeometry :: Save (const filesystem::path & filename) const
 
 
 DLL_HEADER extern STLParameters stlparam;
-int STLGeometry :: GenerateMesh (shared_ptr<Mesh> & mesh, MeshingParameters & mparam)
+int STLGeometry :: GenerateMesh (shared_ptr<Mesh> & mesh, MeshingParameters & mparam, void* geom_ptr)
 {
   STLParameters stlpar = stlparam;
+  if (mesh && geom_ptr) mesh->SetGeometryPtrOverride((netgen::NetgenGeometry*)geom_ptr);
   return STLMeshingDummy (this, mesh, mparam, stlpar);
 }
 

@@ -299,6 +299,11 @@ namespace netgen
     return geometry ? geometry : global_geometry;
   }
 
+  NetgenGeometry* Mesh :: GetGeometryPtr() const
+  {
+    return geometry_ptr_override ? geometry_ptr_override : GetGeometry().get();
+  }
+
   void Mesh :: SetCommunicator(NgMPI_Comm acomm)
   {
     this->comm = acomm;
@@ -307,6 +312,7 @@ namespace netgen
   Mesh & Mesh :: operator= (const Mesh & mesh2)
   {
     geometry = mesh2.geometry;
+    geometry_ptr_override = mesh2.geometry_ptr_override;
     dimension = mesh2.dimension;
     points = mesh2.points;
     segments = mesh2.segments;
@@ -7142,10 +7148,10 @@ namespace netgen
 
   void Mesh :: BuildCurvedElements (int aorder)
   {
-    if (!GetGeometry())
+    if (!GetGeometryPtr())
       throw NgException ("don't have a geometry for mesh curving");
     
-    GetCurvedElements().BuildCurvedElements (&GetGeometry()->GetRefinement(), aorder, false);
+    GetCurvedElements().BuildCurvedElements (&GetGeometryPtr()->GetRefinement(), aorder, false);
 
     for (SegmentIndex seg = 0; seg < GetNSeg(); seg++)
       (*this)[seg].SetCurved (GetCurvedElements().IsSegmentCurved (seg));

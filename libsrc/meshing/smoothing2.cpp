@@ -210,7 +210,7 @@ namespace netgen
   public:
     Opti2SurfaceMinFunction (const Mesh & amesh,
 			     Opti2dLocalData & ald)
-      : ld(ald), geo(*amesh.GetGeometry())
+      : ld(ald), geo(*amesh.GetGeometryPtr())
     { } ;
 
 
@@ -477,7 +477,7 @@ namespace netgen
   public:
     Opti2EdgeMinFunction (const Mesh & amesh,
 			  Opti2dLocalData & ald)
-      : mesh(amesh), ld(ald), geo(*amesh.GetGeometry()) { } ;
+      : mesh(amesh), ld(ald), geo(*amesh.GetGeometryPtr()) { } ;
 
     virtual double FuncGrad (const Vector & x, Vector & g) const;
     virtual double Func (const Vector & x) const;
@@ -548,7 +548,7 @@ namespace netgen
   public:
     Opti2SurfaceMinFunctionJacobian (const Mesh & amesh,
 				     Opti2dLocalData & ald)
-      : mesh(amesh), ld(ald), geo(*amesh.GetGeometry())
+      : mesh(amesh), ld(ald), geo(*amesh.GetGeometryPtr())
     { } ;
     virtual double FuncGrad (const Vector & x, Vector & g) const;
     virtual double FuncDeriv (const Vector & x, const Vector & dir, double & deriv) const;

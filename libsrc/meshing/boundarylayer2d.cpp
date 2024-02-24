@@ -137,7 +137,7 @@ namespace netgen
               box.Add(mesh[pi]);
 
      MeshingParameters mp;
-     Meshing2 meshing (*mesh.GetGeometry(), mp, box);
+     Meshing2 meshing (*mesh.GetGeometryPtr(), mp, box);
 
      Array<PointIndex, PointIndex> compress(mesh.GetNP());
      compress = PointIndex::INVALID;
