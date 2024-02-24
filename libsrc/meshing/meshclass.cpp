@@ -1664,6 +1664,11 @@ namespace netgen
 	clusters -> Update();
       }
 
+    GeometryRegisterArray& gra = FetchGeometryRegisterArray();
+    auto geo = gra.LoadFromMeshFile (infile);
+    if(geo)
+       geometry = geo;
+
     SetNextMajorTimeStamp();
     //  PrintMemInfo (cout);
   }
